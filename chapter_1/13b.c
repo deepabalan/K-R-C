@@ -1,0 +1,2 @@
+/* Write a program to print a histogram of the lengths of words in its 
+   input. A vertical orientation is more challenging.*/
