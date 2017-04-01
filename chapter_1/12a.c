@@ -1,4 +1,4 @@
-// Another solution for Ex.12
+// Another solution for Ex.12.
 
 #include <stdio.h>
 main()

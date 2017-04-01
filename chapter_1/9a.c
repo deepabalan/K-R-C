@@ -1,4 +1,4 @@
-// Replace multiple blanks with single blank
+// Replace multiple blanks with single blank.
 
 
 #include <stdio.h>
