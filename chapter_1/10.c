@@ -10,13 +10,18 @@ main()
 
 	while ((c = getchar()) != EOF) {
 		if (c == '\t') {
-			printf("\\t");
+			putchar('\\');
+			putchar('t');
+			putchar(' ');
 		}
 		else if (c == '\b') {
-			printf("\\b");
+			putchar('\\');
+			putchar('b');
 		}
 		else if (c == '\\') {
-			printf("\\\\");
+			putchar('\\');
+			putchar('\\');
+                        putchar(' ');
 		}
 		else {
 			putchar(c);

@@ -3,19 +3,22 @@
 
 
 #include <stdio.h>
-#define NONBLANK 'a'
+#define IN  1        // blank count set to 1
+#define OUT 0        // blank count set to 0
 
 main()
 {
-	int c, lastc;
-
-	lastc = NONBLANK;
+	int c, state;
+	state = OUT;
 
 	while ((c = getchar()) != EOF) {
-		if (c != ' ')
+		if (c == ' ' && state == OUT) {
+			state = IN;
 			putchar(c);
-		else if (lastc != ' ')
+		}
+		if (c != ' ') {
+			state = OUT;
 			putchar(c);
-		lastc = c;
+		}
 	}
 }
