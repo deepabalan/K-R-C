@@ -2,12 +2,16 @@
  * characters in its input */
 
 #include <stdio.h>
+#define MAXHIST 30
+#define MAXCHAR 26
 main()
 {
-	int i, c;
-	int letter[26];
+	int i, c, j, maxvalue, ovflow;
+	int letter[MAXCHAR];
 
-	for (i = 0; i < 26; ++i)
+	maxvalue = ovflow = 0;
+
+	for (i = 0; i < MAXCHAR; ++i)
 		letter[i] = 0;
 
 	while ((c = getchar()) != EOF) {
@@ -16,14 +20,25 @@ main()
 		else if (c >= 97 && c <= 122)
 			++letter[c - 97];
 	}
-
-	printf("Frequency of characters:\n");
-	for (i = 0; i < 26; ++i) {
-		printf("%c%6d\t", 65 + i, letter[i]);
-		while (letter[i] > 0) { 
-			printf("*");
-			--letter[i];
+	for (i = 0; i < MAXCHAR; ++i) {
+		if (letter[i] > maxvalue)
+			maxvalue = letter[i];
+	}
+	for (i = MAXHIST; i > 0; --i) {
+		for (j = 0; j < MAXCHAR; ++j) {
+			if (letter[j] * MAXHIST / maxvalue >= i)
+				printf(" * ");
+			else
+				printf("   ");
 		}
-		printf("\n");
-	}	
+		putchar('\n');
+	}
+	for (i = 0; i < MAXCHAR; ++i)
+		printf("%2c ", 65 + i);
+	putchar('\n');
+	for (i = 0; i < MAXCHAR; ++i)
+		printf("%2d ", letter[i]);
+	putchar('\n');
+	if (ovflow > 0)
+		printf("There are %d letters >= %d\n", ovflow, MAXCHAR);
 }
