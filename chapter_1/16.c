@@ -19,7 +19,7 @@ main()
 
 	while ((len = my_getline(line, MAXLINE)) > 0) {
 		if (line[len-1] != '\n') {
-			printf("hello\n");
+//			printf("hello\n");
 			while ((c = getchar()) != EOF && c != '\n')
 				++len;
 		}
